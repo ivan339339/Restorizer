@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restorizer.Data", "Restorizer.Data\Restorizer.Data.csproj", "{96A9A5A4-4D80-4A01-8ACD-EEA92800006B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restorizer.UI", "Restorizer.UI\Restorizer.UI.csproj", "{B891248A-4186-4B58-841F-0DF52F2AD37B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96A9A5A4-4D80-4A01-8ACD-EEA92800006B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A9A5A4-4D80-4A01-8ACD-EEA92800006B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A9A5A4-4D80-4A01-8ACD-EEA92800006B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A9A5A4-4D80-4A01-8ACD-EEA92800006B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B891248A-4186-4B58-841F-0DF52F2AD37B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B891248A-4186-4B58-841F-0DF52F2AD37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B891248A-4186-4B58-841F-0DF52F2AD37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B891248A-4186-4B58-841F-0DF52F2AD37B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
