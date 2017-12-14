@@ -36,6 +36,13 @@ namespace Restorizer.UI
             get { return _dishesPage; }
         }
 
+        private Pages.AddDishPage _addDishPage = new Pages.AddDishPage();
+
+        public Pages.AddDishPage AddDishPage
+        {
+            get { return _addDishPage; }
+        }
+
         // Orders branch:
 
         private Pages.OrdersPage _ordersPage = new Pages.OrdersPage();
