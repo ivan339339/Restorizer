@@ -77,6 +77,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddDishPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DishesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PagesFactory.cs" />
+    <Compile Include="Pages\AddDishPage.xaml.cs">
+      <DependentUpon>AddDishPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DishesPage.xaml.cs">
       <DependentUpon>DishesPage.xaml</DependentUpon>
     </Compile>

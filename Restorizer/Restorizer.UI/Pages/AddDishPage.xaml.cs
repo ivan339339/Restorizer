@@ -16,21 +16,13 @@ using System.Windows.Shapes;
 namespace Restorizer.UI.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для DishesPage.xaml
+    /// Логика взаимодействия для AddDishPage.xaml
     /// </summary>
-    public partial class DishesPage : Page, ISectionPage
+    public partial class AddDishPage : Page
     {
-
-        public string Heading { get; } = "Dishes";
-
-        public DishesPage()
+        public AddDishPage()
         {
             InitializeComponent();
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PagesFactory.Default.AddDishPage);
         }
     }
 }
