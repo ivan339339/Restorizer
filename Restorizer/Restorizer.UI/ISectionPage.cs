@@ -8,6 +8,6 @@ namespace Restorizer.UI
 {
     interface ISectionPage
     {
-        string Heading { get; set; }
+        string Heading { get; }
     }
 }

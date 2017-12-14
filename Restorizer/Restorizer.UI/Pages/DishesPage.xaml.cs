@@ -21,7 +21,7 @@ namespace Restorizer.UI.Pages
     public partial class DishesPage : Page, ISectionPage
     {
 
-        public string Heading { get; set; }
+        public string Heading { get; } = "Dishes";
 
         public DishesPage()
         {

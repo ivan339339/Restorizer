@@ -25,5 +25,32 @@ namespace Restorizer.UI
         {
             InitializeComponent();
         }
+
+        private void DishesButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(PagesFactory.Default.DishesPage);
+        }
+
+        private void OrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(PagesFactory.Default.OrdersPage);
+        }
+
+        private void SuppliesButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(PagesFactory.Default.SuppliesPage);
+        }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (MainFrame.Content is ISectionPage)
+            {
+                var sectionPage = MainFrame.Content as ISectionPage;
+                if (sectionPage != null)
+                {
+                    SectionNameLabel.Content = sectionPage.Heading;
+                }
+            }
+        }
     }
 }
