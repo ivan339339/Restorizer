@@ -23,5 +23,19 @@ namespace Restorizer.Data.Model
         public Ingredient Ingredient { get; set; }
 
         public int AmountInG { get; set; }
+
+        public DishHasIngredient( Dish dish, Ingredient ingredient, int amount)
+        {
+            IngredientId = ingredient.Id;
+            Ingredient = ingredient;
+            Dish = dish;
+            DishId = dish.Id;
+            AmountInG = amount;
+        }
+
+        public DishHasIngredient()
+        {
+
+        }
     }
 }
