@@ -23,16 +23,20 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Text="Name" Margin="10" VerticalAlignment="Center"/>
             <TextBlock Text="Category" Grid.Row="1" Margin="10" VerticalAlignment="Center"/>
-            <TextBlock Text="Ingredient" Grid.Row="2" Margin="10"/>
-            
-            <TextBox Name="NameTextBox" Margin="10" Grid.Column="1"/>
-            <ComboBox Name="CategoryComboBox" Margin="10" Grid.Column="1" Grid.Row="1"/>
+            <TextBlock Text="Ingredient" Grid.Row="3" Margin="10"/>
 
-            <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+            <TextBlock Text="Price" Margin="10" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox Name="Price" Grid.Row="2" Grid.Column="1" Margin="10"></TextBox>
+
+            <TextBox Name="NameTextBox" Margin="10" Grid.Column="1"/>
+            <ComboBox Name="CategoryComboBox" DisplayMemberPath="Name" Margin="10" Grid.Column="1" Grid.Row="1"/>
+
+            <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="1*"/>
@@ -42,10 +46,10 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <ListBox Name="PoolListBox" Margin="10" Grid.RowSpan="2"></ListBox>
-                <ListBox Name="SelectedListBox" Grid.Column="2" Margin="10" Grid.RowSpan="2"></ListBox>
-                <Button Name="AddButton" Grid.Column="1" VerticalAlignment="Bottom" Content="=>" Margin="0 5"></Button>
-                <Button Name="RemoveButton" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Content="&lt;=" Margin="0 5"></Button>
+                <ListBox Name="PoolListBox" DisplayMemberPath="Name" Margin="10" Grid.RowSpan="2"></ListBox>
+                <ListBox Name="SelectedListBox" DisplayMemberPath="Name" Grid.Column="3" Margin="10" Grid.RowSpan="2"></ListBox>
+                <Button Name="AddIngredientButton" Grid.Column="1" Content="=>" Margin="0 5" VerticalAlignment="Bottom" Click="AddIngredientButton_Click"/>
+                <Button Name="RemoveIngredientButton" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Content="&lt;=" Margin="0 5" Click="RemoveIngredientButton_Click"></Button>
             </Grid>
         </Grid>
 
@@ -57,7 +61,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15">
+            <Button Name="AddDishButton" Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15" Click="AddDishButton_Click">
                 Add
             </Button>
             <Button Grid.Row="2" Margin="10" Padding="20 10" FontSize="15">
