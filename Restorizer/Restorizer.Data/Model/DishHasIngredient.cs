@@ -13,7 +13,7 @@ namespace Restorizer.Data.Model
         [Key]
         [Column(Order = 1)]
         public int DishId { get; set; }
-
+        
         [Key]
         [Column(Order = 2)]
         public int IngredientId { get; set; }
