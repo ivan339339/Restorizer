@@ -35,11 +35,12 @@ namespace Restorizer.Data.Repositories
                 ingredientstotalamount.Add(new IngredientTotalAmount { Ingr = item.Key, TotalQuantity = totalamount });
             }
 
-            var sordtedingredient = (from ita in ingredientstotalamount
-                                    orderby ita.TotalQuantity ascending
-                                    select ita).ToList();
+            var sordtedingredient = ingredientstotalamount
+                                    .OrderBy(ita => ita.TotalQuantity)
+                                    .Take(5)
+                                    .ToList();
 
-            return new List<IngredientTotalAmount> { sordtedingredient[0], sordtedingredient[1], sordtedingredient[2], sordtedingredient[3], sordtedingredient[4] };
+            return sordtedingredient;
         }
     }
 }

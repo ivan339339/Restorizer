@@ -16,6 +16,8 @@ namespace Restorizer.Data.Interfaces
 
         event MessageCallback MessageSent;
 
+        IEnumerable<IGrouping<Dish, OrderHasDish>> GetGrouped();
+
         DishWithProperty GetMaxProfit();
 
         List<DishWithProperty> Get5LeastSold();
