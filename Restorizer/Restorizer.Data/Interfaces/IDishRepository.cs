@@ -1,4 +1,5 @@
 ﻿using Restorizer.Data.Model;
+using Restorizer.Data.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,9 @@ namespace Restorizer.Data.Interfaces
         bool TryAdd(string name, object category, string price, List<object> ingredients);
 
         event MessageCallback MessageSent;
+
+        DishWithProperty GetMaxProfit();
+
+        List<DishWithProperty> Get5LeastSold();
     }
 }

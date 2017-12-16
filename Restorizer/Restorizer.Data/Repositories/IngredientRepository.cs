@@ -15,11 +15,11 @@ namespace Restorizer.Data.Repositories
 
         public List<IngredientTotalAmount> Get5LeastPopularIngredient()
         {
-            var AllIngredients = _context.Ingredients.ToList();
-            var ingredientsamount = from ai in AllIngredients
+            var allingredients = _context.Ingredients.Include("Dishes").ToList();
+            var ingredientswithdishes = from ai in allingredients
                                     select ai.Dishes;
 
-            List<DishHasIngredient> ingredients = ingredientsamount.SelectMany(x => x).ToList();
+            List<DishHasIngredient> ingredients = ingredientswithdishes.SelectMany(x => x).ToList();
 
             List<IngredientTotalAmount> ingredientstotalamount = new List<IngredientTotalAmount>();
 
