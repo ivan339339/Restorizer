@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restorizer.Data.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,18 +17,37 @@ using System.Windows.Shapes;
 namespace Restorizer.UI.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddIngredienPage.xaml
+    /// Логика взаимодействия для SuggestionsPage.xaml
     /// </summary>
-    public partial class AddIngredienPage : Page
+    public partial class SuggestionsPage : Page, ISectionPage
     {
-        public AddIngredienPage()
+
+        public string Heading { get; } = "Suggestions";
+        public string Title { get; set; }
+
+        public SuggestionsPage(string title)
         {
+
+            Title = title;
+
             InitializeComponent();
+
         }
+
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
+
+        private async void SetSuggestions()
+        {
+
+            var service = new RecipeSearch();
+
+            DishesListView.ItemsSource = await service.GetResult(Title);
+
+        }
+
     }
 }

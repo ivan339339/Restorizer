@@ -24,10 +24,6 @@ namespace Restorizer.UI
         public MainWindow()
         {
             InitializeComponent();
-            //using(var unitOfWork = new UnitOfWork())
-            //{
-            //    unitOfWork.Dishes.Get5LeastSold();
-            //}
         }
 
         private void DishesButton_Click(object sender, RoutedEventArgs e)

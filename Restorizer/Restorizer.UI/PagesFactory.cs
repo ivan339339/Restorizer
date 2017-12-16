@@ -72,5 +72,6 @@ namespace Restorizer.UI
         {
             get { return _addIngredientsPage; }
         }
+
     }
 }

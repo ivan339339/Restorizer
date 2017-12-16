@@ -75,29 +75,54 @@ namespace Restorizer.Data.Repositories
             var result = _context.Dishes.GroupBy(d => d.Category).Select(g => new { Category = g.Key, Dishes = g.ToList() }).ToList();
             return result;
         }
-    
+        
+        public IEnumerable<IGrouping<Dish, OrderHasDish>> GetGrouped()
+        {
+            var alldishes = _context.Dishes.Include("Orders").ToList();
+
+            var disheswithorders = from d in alldishes
+                                   select d.Orders;
+
+            List<OrderHasDish> dishes = disheswithorders.SelectMany(x => x).ToList();
+
+            return from d in dishes
+                   group d by d.Dish;
+        }
+
         public DishWithProperty GetMaxProfit()
         {
+
+            List<DishWithProperty> disheswithprofits = new List<DishWithProperty>();
+
             DishWithProperty dishwithptofit = new DishWithProperty();
-            var dishes = _context.Dishes.Include("Orders");
-            var dishhasorder = from d in dishes
-                               select d.Orders;
+
+            var groupeddishes = GetGrouped();
+
+            foreach (var item in groupeddishes)
+            {
+                int profit = 0;
+
+                foreach (var item1 in item)
+                {
+                    profit += item1.Dish.Price * item1.Quantity;
+                }
+
+                disheswithprofits.Add(new DishWithProperty { Dish = item.Key, Property = profit });
+
+            }
+
+            dishwithptofit = disheswithprofits
+                             .OrderByDescending(d => d.Property)
+                             .FirstOrDefault();
+
             return dishwithptofit;
         }
 
         public List<DishWithProperty> Get5LeastSold()
         {
-            var alldishes = _context.Dishes.Include("Orders").ToList();
-
-            var disheswithorders = from d in alldishes
-                         select d.Orders;
-
-            List<OrderHasDish> dishes = disheswithorders.SelectMany(x => x).ToList();
-
             List<DishWithProperty> disheswithquantity = new List<DishWithProperty>();
 
-            var groupeddishes = from d in dishes
-                                group d by d.Dish;
+            var groupeddishes = GetGrouped();
 
             foreach (var item in groupeddishes)
             {
@@ -107,15 +132,15 @@ namespace Restorizer.Data.Repositories
                 {
                     quantity += item1.Quantity;
                 }
-
                 disheswithquantity.Add(new DishWithProperty { Dish = item.Key, Property = quantity });
-        }
+            }
 
-            var ordereddishes = (from dwq in disheswithquantity
-                                 orderby dwq.Property ascending
-                                 select dwq).ToList();
+            var ordereddishes = disheswithquantity
+                                .OrderBy(d => d.Property)
+                                .Take(5)
+                                .ToList();
 
-            return new List<DishWithProperty> { ordereddishes[0], ordereddishes[1], ordereddishes[2], ordereddishes[3], ordereddishes[4]};
+            return ordereddishes;
         }
 
 

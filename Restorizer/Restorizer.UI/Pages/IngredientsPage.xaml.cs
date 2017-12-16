@@ -18,8 +18,11 @@ namespace Restorizer.UI.Pages
     /// <summary>
     /// Логика взаимодействия для IngredientsPage.xaml
     /// </summary>
-    public partial class IngredientsPage : Page
+    public partial class IngredientsPage : Page, ISectionPage
     {
+
+        public string Heading { get; } = "Ingredients";
+
         public IngredientsPage()
         {
             InitializeComponent();
@@ -30,6 +33,11 @@ namespace Restorizer.UI.Pages
 
             NavigationService.Navigate(PagesFactory.Default.AddIngredientsPage);
 
+        }
+
+        private void Suggestions_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SuggestionsPage(IngredientsListView.SelectedItem.ToString()));
         }
     }
 }
