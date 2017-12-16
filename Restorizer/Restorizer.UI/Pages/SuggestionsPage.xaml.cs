@@ -18,11 +18,21 @@ namespace Restorizer.UI.Pages
     /// <summary>
     /// Логика взаимодействия для SuggestionsPage.xaml
     /// </summary>
-    public partial class SuggestionsPage : Page
+    public partial class SuggestionsPage : Page, ISectionPage
     {
+
+        public string Heading { get; } = "Suggestions";
+
         public SuggestionsPage()
         {
             InitializeComponent();
         }
+
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
     }
 }

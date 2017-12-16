@@ -18,8 +18,11 @@ namespace Restorizer.UI.Pages
     /// <summary>
     /// Логика взаимодействия для IngredientsPage.xaml
     /// </summary>
-    public partial class IngredientsPage : Page
+    public partial class IngredientsPage : Page, ISectionPage
     {
+
+        public string Heading { get; } = "Ingredients";
+
         public IngredientsPage()
         {
             InitializeComponent();
