@@ -1,5 +1,6 @@
 ﻿using Restorizer.Data.Interfaces;
 using Restorizer.Data.Model;
+using Restorizer.Data.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,24 +70,52 @@ namespace Restorizer.Data.Repositories
             }
         }
 
+        public IEnumerable<object> GetByCategories()
+        {
+            var result = _context.Dishes.GroupBy(d => d.Category).Select(g => new { Category = g.Key, Dishes = g.ToList() }).ToList();
+            return result;
+        }
+    
         public Dish GetMaxProfit()
         {
-            var dish = new Dish();
+            DishWithProperty dishwithptofit = new DishWithProperty();
             var dishes = _context.Dishes.Include("Orders");
             var dishhasorder = from d in dishes
                                select d.Orders;
-
-            return dish;
+            return dishwithptofit;
         }
 
-        public List<Dish> Get5LeastSold()
+        public List<DishWithProperty> Get5LeastSold()
         {
-            var dishes = _context.Dishes.Include("Orders").ToList();
-            var query = (from d in dishes
-                         select d.Orders);
-            var getorders = from q in query
-                            select q.FirstOrDefault();
-            return dishes;
+            var alldishes = _context.Dishes.Include("Orders").ToList();
+
+            var disheswithorders = from d in alldishes
+                         select d.Orders;
+
+            List<OrderHasDish> dishes = disheswithorders.SelectMany(x => x).ToList();
+
+            List<DishWithProperty> disheswithquantity = new List<DishWithProperty>();
+
+            var groupeddishes = from d in dishes
+                                group d by d.Dish;
+
+            foreach (var item in groupeddishes)
+            {
+                int quantity = 0;
+
+                foreach (var item1 in item)
+                {
+                    quantity += item1.Quantity;
+                }
+
+                disheswithquantity.Add(new DishWithProperty { Dish = item.Key, Property = quantity });
+        }
+
+            var ordereddishes = (from dwq in disheswithquantity
+                                 orderby dwq.Property ascending
+                                 select dwq).ToList();
+
+            return new List<DishWithProperty> { ordereddishes[0], ordereddishes[1], ordereddishes[2], ordereddishes[3], ordereddishes[4]};
         }
 
 
