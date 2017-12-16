@@ -17,9 +17,11 @@
         <ListView x:Name="DishesListView" Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--<Grid>
-                        <Expander></Expander>
-                    </Grid>-->
+                    <Expander Header="{Binding Category.Name}">
+                        <ListView>
+                            
+                        </ListView>
+                    </Expander>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

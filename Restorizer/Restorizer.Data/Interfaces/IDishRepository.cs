@@ -11,6 +11,8 @@ namespace Restorizer.Data.Interfaces
     {
         bool TryAdd(string name, object category, string price, List<object> ingredients);
 
+        IEnumerable<object> GetByCategories();
+
         event MessageCallback MessageSent;
     }
 }

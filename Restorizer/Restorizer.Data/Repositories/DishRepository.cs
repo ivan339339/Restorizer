@@ -69,6 +69,12 @@ namespace Restorizer.Data.Repositories
             }
         }
 
+        public IEnumerable<object> GetByCategories()
+        {
+            var result = _context.Dishes.GroupBy(d => d.Category).Select(g => new { Category = g.Key, Dishes = g.ToList() }).ToList();
+            return result;
+        }
+    
         public Dish GetMaxProfit()
         {
             var dish = new Dish();
