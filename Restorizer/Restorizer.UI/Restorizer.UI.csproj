@@ -104,6 +104,9 @@
     <Compile Include="Pages\IngredientsPage.xaml.cs">
       <DependentUpon>IngredientsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SuggestionsPage.xaml.cs">
+      <DependentUpon>SuggestionsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\InsertQuantityWindow.xaml.cs">
       <DependentUpon>InsertQuantityWindow.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\OrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SuggestionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
