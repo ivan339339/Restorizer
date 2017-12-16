@@ -110,6 +110,7 @@
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
+    <Compile Include="ViewModel\IngredientTotalAmount.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712092203162_Initial.resx">
