@@ -15,7 +15,13 @@
         </Grid.ColumnDefinitions>
 
         <ListView x:Name="DishesListView" Margin="10">
-            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<Grid>
+                        <Expander></Expander>
+                    </Grid>-->
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         
         <Grid Grid.Column="1" Background="#FFE6AABE" >

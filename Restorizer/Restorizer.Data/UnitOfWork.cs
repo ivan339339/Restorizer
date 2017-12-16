@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Restorizer.Data
 {
+    public delegate void MessageCallback(string heading, string content);
+
     public class UnitOfWork : IDisposable
     {
 

@@ -9,5 +9,8 @@ namespace Restorizer.Data.Interfaces
 {
     public interface IDishRepository : IRepository<Dish>
     {
+        bool TryAdd(string name, object category, string price, List<object> ingredients);
+
+        event MessageCallback MessageSent;
     }
 }

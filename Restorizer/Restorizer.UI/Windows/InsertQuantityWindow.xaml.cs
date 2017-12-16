@@ -32,13 +32,13 @@ namespace Restorizer.UI.Windows
         private void Button_Click(object sender, RoutedEventArgs e)
         { 
             int quantity;
-            if (QuantityTextBox.Text != null && int.TryParse(QuantityTextBox.Text, out quantity))
+            if (QuantityTextBox.Text != "" && int.TryParse(QuantityTextBox.Text, out quantity) && quantity > 0)
             {
                 QuantityInserted?.Invoke(quantity);
                 DialogResult = true;
             }
             else
-                MessageBox.Show("Check Info");
+                MessageBox.Show("Incorrect input: the amount must be a positive integer", "Error");
         }
     }
 }

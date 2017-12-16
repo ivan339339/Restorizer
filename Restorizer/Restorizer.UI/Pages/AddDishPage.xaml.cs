@@ -29,7 +29,10 @@ namespace Restorizer.UI.Pages
 
         private List<Ingredient> _poolIngredients = new List<Ingredient>();
 
-        private List<Ingredient> _selectedIngredients = new List<Ingredient>();
+        private List<Object> _selectedIngredients = new List<Object>();
+
+        private int _currentQuantity;
+
 
         public AddDishPage()
         {
@@ -59,11 +62,9 @@ namespace Restorizer.UI.Pages
             SelectedListBox.ItemsSource = _selectedIngredients;
         }
 
-        private int currentquantity;
-
         private void GetQuantity(int quantity)
         {
-            currentquantity = quantity;
+            _currentQuantity = quantity;
         }
 
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
@@ -72,48 +73,53 @@ namespace Restorizer.UI.Pages
             insertWindow.QuantityInserted += GetQuantity;
             insertWindow.ShowDialog();
      
-            var selected = PoolListBox.SelectedItem as Ingredient;
-            //var dishhasingredient = new DishHasIngredient(newDish, selected, currentquantity);
-            //newDish.Ingredients.Add(dishhasingredient);
-            _selectedIngredients.Add(selected);
-            _poolIngredients.Remove(selected);
+            var selectedIngredient = PoolListBox.SelectedItem as Ingredient;
+            
+            _selectedIngredients.Add(new
+                {
+                    Ingredient = selectedIngredient,
+                    Amount =_currentQuantity,
+                    Info = $"{selectedIngredient.Name}: {_currentQuantity} g."
+                });
+
+            _poolIngredients.Remove(selectedIngredient);
             RefreshPoolListBox();
             RefreshSelectedListBox();
         }
 
         private void RemoveIngredientButton_Click(object sender, RoutedEventArgs e)
         {
-            var selected = SelectedListBox.SelectedItem as Ingredient;
-            DishHasIngredient deletedingredient = new DishHasIngredient();
-           
-            //foreach (var item in newDish.Ingredients)
-            //{
-            //    if (item.Ingredient == selected)
-            //        deletedingredient = item;
-            //    break;
-            //}
-            //newDish.Ingredients.Remove(deletedingredient);
-            _poolIngredients.Add(selected);
-            _selectedIngredients.Remove(selected);
+            var selectedObject = SelectedListBox.SelectedItem;
+
+            var ingredient = selectedObject?.GetType().GetProperty("Ingredient")?.GetValue(selectedObject, null) as Ingredient;
+
+            _poolIngredients.Add(ingredient);
+            _selectedIngredients.Remove(selectedObject);
             RefreshPoolListBox();
             RefreshSelectedListBox();
         }
 
         private void AddDishButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NameTextBox.Text != null)
-                newDish.Name = NameTextBox.Text;
-            else
-                MessageBox.Show("Type the name");
-            if (CategoryComboBox.SelectedIndex != -1)
-                newDish.Category = CategoryComboBox.SelectedItem as Category;
-            else
-                MessageBox.Show("You should choose the category");
-            using (var unitOfWork = new UnitOfWork())
+            bool result = false;
+            using(var uow = new UnitOfWork())
             {
-                unitOfWork.Dishes.Add(newDish);
-                unitOfWork.Complete();
+                uow.Dishes.MessageSent += ShowMessage;
+                result = uow.Dishes.TryAdd(NameTextBox.Text, CategoryComboBox.SelectedItem, PriceTextBox.Text, _selectedIngredients);  
+                uow.Complete();
             }
+            if (result)
+                NavigationService.GoBack();
+        }
+
+        private void ShowMessage(string heading, string content)
+        {
+            MessageBox.Show(content, heading);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }
