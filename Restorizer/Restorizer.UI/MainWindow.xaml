@@ -38,6 +38,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -52,6 +53,9 @@
             </Button>
             <Button x:Name="SuppliesButton" Grid.Row="3" Margin="10" Padding="10" Click="SuppliesButton_Click">
                 Supplies
+            </Button>
+            <Button x:Name="IngredientsButton" Grid.Row="4" Margin="10" Padding="10" Click="IngredientsButton_Click">
+                Ingredients
             </Button>
             
         </Grid>
