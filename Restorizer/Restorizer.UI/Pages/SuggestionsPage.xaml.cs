@@ -16,18 +16,23 @@ using System.Windows.Shapes;
 namespace Restorizer.UI.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddIngredienPage.xaml
+    /// Логика взаимодействия для SuggestionsPage.xaml
     /// </summary>
-    public partial class AddIngredienPage : Page
+    public partial class SuggestionsPage : Page, ISectionPage
     {
-        public AddIngredienPage()
+
+        public string Heading { get; } = "Suggestions";
+
+        public SuggestionsPage()
         {
             InitializeComponent();
         }
+
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
+
     }
 }
