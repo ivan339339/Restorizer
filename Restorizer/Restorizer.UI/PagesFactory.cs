@@ -17,11 +17,7 @@ namespace Restorizer.UI
         {
             get
             {
-                if (_default == null)
-                {
-                    _default = new PagesFactory();
-                }
-                return _default;
+                return _default ?? (_default = new PagesFactory());
             }
         }
 
@@ -59,6 +55,22 @@ namespace Restorizer.UI
         public Pages.SuppliesPage SuppliesPage
         {
             get { return _suppliesPage; }
+        }
+
+        // Ingredients branch:
+
+        private Pages.IngredientsPage _ingredientsPage = new Pages.IngredientsPage();
+
+        public Pages.IngredientsPage IngredientsPage
+        {
+            get { return _ingredientsPage; }
+        }
+
+        private Pages.AddIngredienPage _addIngredientsPage = new Pages.AddIngredienPage();
+
+        public Pages.AddIngredienPage AddIngredientsPage
+        {
+            get { return _addIngredientsPage; }
         }
     }
 }
