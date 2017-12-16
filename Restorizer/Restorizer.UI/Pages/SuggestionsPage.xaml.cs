@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restorizer.Data.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,16 +23,30 @@ namespace Restorizer.UI.Pages
     {
 
         public string Heading { get; } = "Suggestions";
+        public string Title { get; set; }
 
-        public SuggestionsPage()
+        public SuggestionsPage(string title)
         {
+
+            Title = title;
+
             InitializeComponent();
+
         }
 
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private async void SetSuggestions()
+        {
+
+            var service = new RecipeSearch();
+
+            DishesListView.ItemsSource = await service.GetResult(Title);
+
         }
 
     }

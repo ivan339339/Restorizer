@@ -73,12 +73,5 @@ namespace Restorizer.UI
             get { return _addIngredientsPage; }
         }
 
-        private Pages.SuggestionsPage _suggestionsPage = new Pages.SuggestionsPage();
-
-        public Pages.SuggestionsPage SuggestionsPage
-        {
-            get { return _suggestionsPage; }
-        }
-
     }
 }

@@ -37,7 +37,7 @@ namespace Restorizer.UI.Pages
 
         private void Suggestions_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(PagesFactory.Default.SuggestionsPage);
+            NavigationService.Navigate(new SuggestionsPage(IngredientsListView.SelectedItem.ToString()));
         }
     }
 }
