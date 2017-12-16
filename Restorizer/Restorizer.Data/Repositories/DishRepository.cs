@@ -76,7 +76,7 @@ namespace Restorizer.Data.Repositories
             return result;
         }
     
-        public Dish GetMaxProfit()
+        public DishWithProperty GetMaxProfit()
         {
             DishWithProperty dishwithptofit = new DishWithProperty();
             var dishes = _context.Dishes.Include("Orders");
