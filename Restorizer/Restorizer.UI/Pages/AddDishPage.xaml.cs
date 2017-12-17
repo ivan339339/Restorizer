@@ -123,6 +123,7 @@ namespace Restorizer.UI.Pages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            _preloadedName = null;
             NavigationService.GoBack();
         }
 
