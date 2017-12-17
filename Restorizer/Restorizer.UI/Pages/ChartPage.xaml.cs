@@ -30,7 +30,7 @@ namespace Restorizer.UI.Pages
             CreateChart();
         }
 
-        public void CreateChart()
+        private void CreateChart()
         {
             List<DayWithRevenue> dayswithrevenues = new List<DayWithRevenue>();
             using (var uow = new UnitOfWork())

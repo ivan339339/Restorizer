@@ -24,7 +24,7 @@ namespace Restorizer.Data.Interfaces
 
         IEnumerable<IGrouping<Dish, OrderHasDish>> GetGrouped();
 
-        DishWithProperty GetMaxProfit();
+        DishWithProperty GetMaxRevenue();
 
         List<DishWithProperty> Get5LeastSold();
     }

@@ -139,33 +139,33 @@ namespace Restorizer.Data.Repositories
                    group d by d.Dish;
         }
 
-        public DishWithProperty GetMaxProfit()
+        public DishWithProperty GetMaxRevenue()
         {
 
-            List<DishWithProperty> disheswithprofits = new List<DishWithProperty>();
+            List<DishWithProperty> disheswithrevenues = new List<DishWithProperty>();
 
-            DishWithProperty dishwithptofit = new DishWithProperty();
+            DishWithProperty dishwithrevenue = new DishWithProperty();
 
             var groupeddishes = GetGrouped();
 
             foreach (var item in groupeddishes)
             {
-                int profit = 0;
+                int revenue = 0;
 
                 foreach (var item1 in item)
                 {
-                    profit += item1.Dish.Price * item1.Quantity;
+                    revenue += item1.Dish.Price * item1.Quantity;
                 }
 
-                disheswithprofits.Add(new DishWithProperty { Dish = item.Key, Property = profit });
+                disheswithrevenues.Add(new DishWithProperty { Dish = item.Key, Property = revenue });
 
             }
 
-            dishwithptofit = disheswithprofits
+            dishwithrevenue = disheswithrevenues
                              .OrderByDescending(d => d.Property)
                              .FirstOrDefault();
 
-            return dishwithptofit;
+            return dishwithrevenue;
         }
 
         public List<DishWithProperty> Get5LeastSold()

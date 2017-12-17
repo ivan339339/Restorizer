@@ -112,6 +112,9 @@
     <Compile Include="Pages\DashBoardPage.xaml.cs">
       <DependentUpon>DashBoardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DishStatisticsPage.xaml.cs">
+      <DependentUpon>DishStatisticsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DishViewPage.xaml.cs">
       <DependentUpon>DishViewPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,9 @@
     </Compile>
     <Compile Include="Pages\IngredientsPage.xaml.cs">
       <DependentUpon>IngredientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IngredientStatisticsPage.xaml.cs">
+      <DependentUpon>IngredientStatisticsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SuggestionsPage.xaml.cs">
       <DependentUpon>SuggestionsPage.xaml</DependentUpon>
@@ -176,6 +182,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DishStatisticsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DishViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\IngredientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\IngredientStatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

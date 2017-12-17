@@ -39,6 +39,20 @@ namespace Restorizer.UI
             get { return _chartPage = new Pages.ChartPage(); }
         }
 
+        private Pages.DishStatisticsPage _dishStatisticsPage = new Pages.DishStatisticsPage();
+
+        public Pages.DishStatisticsPage DishStatisticsPage
+        {
+            get { return _dishStatisticsPage = new Pages.DishStatisticsPage(); }
+        }
+
+        private Pages.IngredientStatisticsPage _ingredientStatisticsPage = new Pages.IngredientStatisticsPage();
+
+        public Pages.IngredientStatisticsPage IngredientStatisticsPage
+        {
+            get { return _ingredientStatisticsPage = new Pages.IngredientStatisticsPage(); }
+        }
+
 
         // Dishes branch:
 

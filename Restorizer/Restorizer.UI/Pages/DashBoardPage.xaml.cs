@@ -30,5 +30,15 @@ namespace Restorizer.UI.Pages
         {
             DashBoardFrame.NavigationService.Navigate(PagesFactory.Default.ChartPage);
         }
+
+        private void DishButton_Click(object sender, RoutedEventArgs e)
+        {
+            DashBoardFrame.NavigationService.Navigate(PagesFactory.Default.DishStatisticsPage);
+        }
+
+        private void IngredientsButton_Click(object sender, RoutedEventArgs e)
+        {
+            DashBoardFrame.NavigationService.Navigate(PagesFactory.Default.IngredientStatisticsPage);
+        }
     }
 }

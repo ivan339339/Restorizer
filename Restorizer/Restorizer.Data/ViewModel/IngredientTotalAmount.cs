@@ -11,5 +11,12 @@ namespace Restorizer.Data.ViewModel
     {
         public Ingredient Ingr { get; set; }
         public int TotalQuantity { get; set; }
+        public string Info
+        {
+            get
+            {
+                return $"{Ingr.Name}: {TotalQuantity}";
+            }
+        }
     }
 }

@@ -11,5 +11,13 @@ namespace Restorizer.Data.ViewModel
     {
         public Dish Dish { get; set; }
         public int Property { get; set; }
+
+        public string Info
+        {
+            get
+            {
+                return $"{Dish.Name}: {Property}";
+            }
+        }
     }
 }
