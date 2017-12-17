@@ -86,10 +86,13 @@
     <Compile Include="Interfaces\IIngredientRepository.cs" />
     <Compile Include="Interfaces\IOrderRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\ISupplierRepository.cs" />
     <Compile Include="Migrations\201712092203162_Initial.cs" />
     <Compile Include="Migrations\201712092203162_Initial.Designer.cs">
       <DependentUpon>201712092203162_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712170221484_Supply-Model-Change.cs" />
+    <Compile Include="Migrations\201712170221484_Supply-Model-Change.Designer.cs">
+      <DependentUpon>201712170221484_Supply-Model-Change.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Category.cs" />
@@ -98,8 +101,6 @@
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderHasDish.cs" />
-    <Compile Include="Model\Supplier.cs" />
-    <Compile Include="Model\SupplierHasIngredient.cs" />
     <Compile Include="Model\Supply.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeSearchResult.cs" />
@@ -108,7 +109,6 @@
     <Compile Include="Repositories\IngredientRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="ViewModel\DishWithProperty.cs" />
     <Compile Include="ViewModel\IngredientTotalAmount.cs" />
@@ -116,6 +116,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712092203162_Initial.resx">
       <DependentUpon>201712092203162_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712170221484_Supply-Model-Change.resx">
+      <DependentUpon>201712170221484_Supply-Model-Change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

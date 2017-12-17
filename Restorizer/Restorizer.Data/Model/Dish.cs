@@ -14,5 +14,6 @@ namespace Restorizer.Data.Model
         public Category Category { get; set; }
         public List<DishHasIngredient> Ingredients { get; set; }
         public List<OrderHasDish> Orders { get; set; }
+        public bool IsArchived { get; set; }
     }
 }

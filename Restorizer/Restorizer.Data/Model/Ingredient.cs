@@ -12,6 +12,7 @@ namespace Restorizer.Data.Model
         public string Name { get; set; }
         public List<DishHasIngredient> Dishes { get; set; }
         public List<Supply> Supplies { get; set; }
-        public List<SupplierHasIngredient> Suppliers { get; set; }
+        public int PricePerKg { get; set; }
+
     }
 }

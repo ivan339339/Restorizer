@@ -107,6 +107,9 @@
     <Compile Include="Pages\SuggestionsPage.xaml.cs">
       <DependentUpon>SuggestionsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SuppliesPage.xaml.cs">
+      <DependentUpon>SuppliesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\InsertQuantityWindow.xaml.cs">
       <DependentUpon>InsertQuantityWindow.xaml</DependentUpon>
     </Compile>
@@ -175,9 +178,6 @@
     <Compile Include="Pages\OrdersPage.xaml.cs">
       <DependentUpon>OrdersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SuppliesPage.xaml.cs">
-      <DependentUpon>SuppliesPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -195,7 +195,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

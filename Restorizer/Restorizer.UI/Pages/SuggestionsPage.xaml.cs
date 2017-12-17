@@ -23,13 +23,12 @@ namespace Restorizer.UI.Pages
     {
 
         public string Heading { get; } = "Suggestions";
-        public string Title { get; set; }
+        public string IngredientName { get; set; }
 
         public SuggestionsPage(string title)
         {
 
-            Title = title;
-
+            IngredientName = title;
             InitializeComponent();
 
         }

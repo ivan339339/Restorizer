@@ -12,18 +12,12 @@ namespace Restorizer.Data.Model
     {
         [Key]
         [Column(Order = 1)]
-        public int SupplierId { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
         public int IngredientId { get; set; }
-
-        public Supplier Supplier { get; set; }
 
         public Ingredient Ingredient { get; set; }
 
         [Key]
-        [Column(Order = 3)]
+        [Column(Order = 2)]
         public DateTime Date { get; set; }
 
         public int Amount { get; set; }

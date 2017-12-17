@@ -19,7 +19,6 @@ namespace Restorizer.Data
         public ICategoryRepository Categories { get; }
         public IOrderRepository Orders { get; }
         public IIngredientRepository Ingredients { get; }
-        public ISupplierRepository Suppliers { get; }
 
 
         public UnitOfWork()
@@ -28,7 +27,6 @@ namespace Restorizer.Data
             Categories = new CategoryRepository(_context);
             Orders = new OrderRepository(_context);
             Ingredients = new IngredientRepository(_context);
-            Suppliers = new SupplierRepository(_context);
         }
 
         public void Complete()
