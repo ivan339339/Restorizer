@@ -50,9 +50,17 @@ namespace Restorizer.UI.Pages
 
         private async void SetSuggestions()
         {
-            _service = new RecipeSearch();
-            DishesListView.ItemsSource = null;
-            DishesListView.ItemsSource = await _service.GetResult(_currentIngredient.Name);
+            try
+            {
+                _service = new RecipeSearch();
+                DishesListView.ItemsSource = null;
+                DishesListView.ItemsSource = await _service.GetResult(_currentIngredient.Name);
+            }
+            catch
+            {
+                MessageBox.Show("There was a problem with the connection", "Error!");
+                NavigationService.GoBack();
+            }
         }
 
         private void DishesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
