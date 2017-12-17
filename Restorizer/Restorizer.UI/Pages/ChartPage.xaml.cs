@@ -1,4 +1,8 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using Restorizer.Data;
+using Restorizer.Data.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +27,27 @@ namespace Restorizer.UI.Pages
         public ChartPage()
         {
             InitializeComponent();
+            CreateChart();
         }
 
         public void CreateChart()
         {
-            
+            List<DayWithRevenue> dayswithrevenues = new List<DayWithRevenue>();
+            using (var uow = new UnitOfWork())
+            {
+                dayswithrevenues = uow.Statistics.GetDaysWithProfit();
+            }
+            ColumnSeries cs = new ColumnSeries() { DataLabels = true, Values = new ChartValues<int>() };
+            Axis ax = new Axis() { Separator = new LiveCharts.Wpf.Separator() { Step = 1, IsEnabled = false }, Title = "Date" };
+            ax.Labels = new List<string>();
+            foreach (var item in dayswithrevenues)
+            {
+                cs.Values.Add(item.Revenue);
+                ax.Labels.Add(item.Day);
+            }
+            RevenueChart.Series.Add(cs);
+            RevenueChart.AxisX.Add(ax);
+            RevenueChart.AxisY.Add(new Axis() { Title = "Revenue"});
         }
     }
 }

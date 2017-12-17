@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restorizer.Data.ViewModel
 {
-    class DayWithRevenue
+    public class DayWithRevenue
     {
         public string Day { get; set; }
         public int Revenue { get; set; }
