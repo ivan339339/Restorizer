@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Restorizer.Data.Interfaces;
 
 namespace Restorizer.UI.Pages
 {
@@ -25,6 +26,8 @@ namespace Restorizer.UI.Pages
     public partial class SuggestionsPage : Page, ISectionPage
     {
         private Ingredient _currentIngredient;
+
+        private IRecipeSearch _service;
 
         public string Heading { get; } = "Suggestions";
 
@@ -47,9 +50,9 @@ namespace Restorizer.UI.Pages
 
         private async void SetSuggestions()
         {
-            var service = new RecipeSearch();
+            _service = new RecipeSearch();
             DishesListView.ItemsSource = null;
-            DishesListView.ItemsSource = await service.GetResult(_currentIngredient.Name);
+            DishesListView.ItemsSource = await _service.GetResult(_currentIngredient.Name);
         }
 
         private void DishesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
