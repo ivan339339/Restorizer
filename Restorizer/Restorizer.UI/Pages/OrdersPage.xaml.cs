@@ -56,5 +56,10 @@ namespace Restorizer.UI.Pages
             }
             return orders;
         }
+
+        private void ViewButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
