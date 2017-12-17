@@ -2,6 +2,7 @@
 using Restorizer.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,9 @@ namespace Restorizer.UI.Pages
         {
             InitializeComponent();
             _currentIngredient = ingredient;
+
+            SetSuggestions();
+
         }
 
 
@@ -50,6 +54,17 @@ namespace Restorizer.UI.Pages
         private void DishesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             BrowseButton.IsEnabled = DishesListView.SelectedIndex != -1;
+        }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            var SelectedItem = DishesListView.SelectedItem as Data.RecipeSearchResult;
+
+            var url = "https://www.google.ru/search" + $"?q={SelectedItem.Title}";
+            Process.Start(url);
+
+
         }
     }
 }
