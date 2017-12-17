@@ -7,10 +7,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Restorizer.Data.Interfaces;
 
 namespace Restorizer.Data.API
 {
-    public class RecipeSearch
+    public class RecipeSearch : IRecipeSearch
     {
 
         private string uri = "https://webknox-recipes.p.mashape.com/recipes/search";

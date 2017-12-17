@@ -93,6 +93,7 @@
     <Compile Include="Interfaces\IDishRepository.cs" />
     <Compile Include="Interfaces\IIngredientRepository.cs" />
     <Compile Include="Interfaces\IOrderRepository.cs" />
+    <Compile Include="Interfaces\IRecipeSearch.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStatisticsLogic.cs" />
     <Compile Include="Logic\StatisticsLogic.cs" />
