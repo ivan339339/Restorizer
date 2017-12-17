@@ -15,7 +15,7 @@ namespace Restorizer.Data.ViewModel
         {
             get
             {
-                return $"{Ingr.Name}: {TotalQuantity}";
+                return $"{Ingr.Name}: {TotalQuantity} gr.";
             }
         }
     }
