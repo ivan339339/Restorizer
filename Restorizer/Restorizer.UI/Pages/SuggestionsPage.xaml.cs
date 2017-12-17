@@ -62,7 +62,7 @@ namespace Restorizer.UI.Pages
 
             var SelectedItem = DishesListView.SelectedItem as Data.API.DTO.RecipeSearchResult;
 
-            var url = "https://www.google.ru/search" + $"?q={SelectedItem.Title}";
+            var url = "https://www.google.ru/search" + $"?q={SelectedItem.Title.Replace("&", "and")}";
             Process.Start(url);
 
 
