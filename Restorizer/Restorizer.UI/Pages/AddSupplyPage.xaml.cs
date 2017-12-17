@@ -16,23 +16,18 @@ using System.Windows.Shapes;
 namespace Restorizer.UI.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для SuppliesPage.xaml
+    /// Логика взаимодействия для AddSupplyPage.xaml
     /// </summary>
-    public partial class SuppliesPage : Page, ISectionPage
+    public partial class AddSupplyPage : Page
     {
-
-        public string Heading { get; } = "Supplies";
-
-        public SuppliesPage()
+        public AddSupplyPage()
         {
             InitializeComponent();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-
-            NavigationService.Navigate(PagesFactory.Default.AddSupplyPage);
-
+            NavigationService.GoBack();
         }
     }
 }

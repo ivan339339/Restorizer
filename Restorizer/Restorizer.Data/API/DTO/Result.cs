@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Restorizer.Data.DTO
+namespace Restorizer.Data.API.DTO
 {
     class Result
     {

@@ -57,6 +57,14 @@ namespace Restorizer.UI
             get { return _suppliesPage; }
         }
 
+        private Pages.AddSupplyPage _addSupplyPage = new Pages.AddSupplyPage();
+
+        public Pages.AddSupplyPage AddSupplyPage
+        {
+            get { return _addSupplyPage; }
+        }
+
+
         // Ingredients branch:
 
         private Pages.IngredientsPage _ingredientsPage = new Pages.IngredientsPage();
