@@ -44,7 +44,7 @@ namespace Restorizer.UI.Pages
         {
             var service = new RecipeSearch();
             DishesListView.ItemsSource = null;
-            DishesListView.ItemsSource = await service.GetResult(Title);
+            DishesListView.ItemsSource = await service.GetResult(_currentIngredient.Name);
         }
 
         private void DishesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
