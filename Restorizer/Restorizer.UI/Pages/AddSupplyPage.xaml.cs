@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Restorizer.Data;
+using Restorizer.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,50 @@ namespace Restorizer.UI.Pages
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void AddSupplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool result;
+            using(var uow = new UnitOfWork())
+            {
+                uow.Supplies.MessageSent += ShowMessage;
+                result = uow.Supplies.TryAdd(DatePicker.SelectedDate, IngredientComboBox.SelectedItem, AmountTextBox.Text);
+                uow.Complete();
+            }
+            if (result)
+            {
+                NavigationService.GoBack();
+            }
+        }
+
+        private void LoadData()
+        {
+            IngredientComboBox.ItemsSource = null;
+            IngredientComboBox.ItemsSource = LoadIngredients();
+
+            DatePicker.SelectedDate = DateTime.Now;
+            DatePicker.DisplayDateStart = DateTime.Now;
+        }
+
+        private IEnumerable<Ingredient> LoadIngredients()
+        {
+            IEnumerable<Ingredient> ingredients;
+            using(var uow = new UnitOfWork())
+            {
+                ingredients = uow.Ingredients.GetAllItems();
+            }
+            return ingredients;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+        }
+
+        private void ShowMessage(string heading, string content)
+        {
+            MessageBox.Show(content, heading);
         }
     }
 }

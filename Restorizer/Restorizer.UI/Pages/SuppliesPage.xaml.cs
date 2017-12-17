@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Restorizer.Data;
+using Restorizer.Data.Model;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,8 +34,30 @@ namespace Restorizer.UI.Pages
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
 
-            NavigationService.Navigate(PagesFactory.Default.AddSupplyPage);
+            NavigationService.Navigate(new AddSupplyPage());
 
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshListView();
+        }
+
+        private void RefreshListView()
+        {
+            SuppliesListView.ItemsSource = null;
+            SuppliesListView.ItemsSource = LoadData();
+        }
+
+        private IEnumerable<Supply> LoadData()
+        {
+            IEnumerable<Supply> supplies;
+            using(var uow = new UnitOfWork())
+            {
+                supplies = uow.Supplies.GetWithIngredients();
+            }
+            return supplies;
+        }
+
     }
 }

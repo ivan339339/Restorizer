@@ -18,6 +18,7 @@ namespace Restorizer.Data
 
         public DbSet<Ingredient> Ingredients { get; set; }
 
+        public DbSet<Supply> Supplies { get; set; }
 
         public Context() : base("RestorizerDB")
         {

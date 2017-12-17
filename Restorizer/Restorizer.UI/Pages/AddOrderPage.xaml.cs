@@ -59,6 +59,7 @@ namespace Restorizer.UI.Pages
             bool result = false;
             using (var uow = new UnitOfWork())
             {
+                uow.Orders.MessageSent += ShowMessage;
                 result = uow.Orders.TryAdd(_selectedDishes);
                 uow.Complete();
             }
@@ -115,6 +116,11 @@ namespace Restorizer.UI.Pages
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void ShowMessage(string heading, string content)
+        {
+            MessageBox.Show(content, heading);
         }
     }
 }
