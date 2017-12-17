@@ -16,7 +16,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="SuppliesListView" Margin="10" DisplayMemberPath="Title">
+        <ListView x:Name="SuppliesListView" Margin="10">
 
         </ListView>
 
