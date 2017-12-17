@@ -15,6 +15,11 @@ namespace Restorizer.Data.Repositories
 
         public event MessageCallback MessageSent;
 
+        public IEnumerable<Dish> GetAllActive()
+        {
+            return _context.Dishes.Where(d => d.IsArchived == false);
+        }
+
         public bool TryAdd(string name, object category, string price, List<object> ingredients)
         {
             if (IsDataValid(name, category, price, ingredients))
@@ -116,7 +121,7 @@ namespace Restorizer.Data.Repositories
 
         public IEnumerable<Object> GetByCategories()
         {
-            var dishes = _context.Dishes.Include("Ingredients").Include("Ingredients.Ingredient").Include("Category").ToList();
+            var dishes = _context.Dishes.Include("Ingredients").Include("Ingredients.Ingredient").Include("Category").Where(d => d.IsArchived == false).ToList();
             var result = dishes.GroupBy(d => d.Category).Select(g => g.Key).ToList();
             return result;
         }
@@ -188,6 +193,21 @@ namespace Restorizer.Data.Repositories
             return ordereddishes;
         }
 
+        public bool TryArchive(object dish)
+        {
+            if (dish is Dish)
+            {
+                var localDish = dish as Dish;
+                var dishInDB = _context.Dishes.FirstOrDefault(d => d.Id == localDish.Id);
+                dishInDB.IsArchived = true;
+                return true;
+            }
+            else
+            {
+                MessageSent?.Invoke("Error!", "The dish wasn't chosen correctly!");
+                return false;
+            }
+        }
 
     }
 }

@@ -37,7 +37,7 @@ namespace Restorizer.UI.Pages
 
         private void UpdateButtons()
         {
-            var buttons = new List<Button> { EditButton, DeleteButton };
+            var buttons = new List<Button> { EditButton, ArchiveButton };
             buttons.ForEach(btn => btn.IsEnabled = _selectedDish != null);
         }
 
@@ -90,6 +90,21 @@ namespace Restorizer.UI.Pages
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new EditDishPage(_selectedDish));
+        }
+
+        private void ArchiveButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool result = false;
+            using (var uow = new UnitOfWork())
+            {
+                result = uow.Dishes.TryArchive(_selectedDish);
+                uow.Complete();
+            }
+            if (result)
+            {
+                RefreshListView();
+                SelectedDish = null;
+            }
         }
     }
 }

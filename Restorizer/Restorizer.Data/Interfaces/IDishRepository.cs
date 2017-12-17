@@ -14,6 +14,8 @@ namespace Restorizer.Data.Interfaces
 
         bool TryEdit(Dish dish, string name, object category, string price, List<DishHasIngredient> ingredients);
 
+        bool TryArchive(object dish);
+
         IEnumerable<Object> GetByCategories();
 
 

@@ -10,6 +10,13 @@ namespace Restorizer.Data.Interfaces
 {
     public interface IIngredientRepository : IRepository<Ingredient>
     {
+        event MessageCallback MessageSent;
+
+        bool TryAdd(string name, string price);
+
+        bool TryEdit(Ingredient ingredient, string name, string price);
+
+
         List<IngredientTotalAmount> Get5LeastPopularIngredient();
 
         IEnumerable<Ingredient> GetIngredientDifference(List<DishHasIngredient> ingredients);

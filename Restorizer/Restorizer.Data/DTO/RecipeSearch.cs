@@ -33,7 +33,7 @@ namespace Restorizer.Data.DTO
                 return data.results.Select(item => new RecipeSearchResult()
                 {
 
-                    title = item.title
+                    Title = item.title
 
                 }).ToList();
 

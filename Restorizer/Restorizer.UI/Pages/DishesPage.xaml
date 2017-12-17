@@ -55,8 +55,8 @@
             <Button Name="EditButton" Grid.Row="1" Margin="10" Padding="20 10" FontSize="15" IsEnabled="False" Click="EditButton_Click">
                 Edit
             </Button>
-            <Button Name="DeleteButton" Grid.Row="2" Margin="10" Padding="20 10" FontSize="15" IsEnabled="False">
-                Delete
+            <Button Name="ArchiveButton" Grid.Row="2" Margin="10" Padding="20 10" FontSize="15" IsEnabled="False" Click="ArchiveButton_Click">
+                Archive
             </Button>
             
         </Grid>

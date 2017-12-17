@@ -92,14 +92,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Pages\AddIngredienPage.xaml.cs">
-      <DependentUpon>AddIngredienPage.xaml</DependentUpon>
+    <Compile Include="Pages\AddIngredientPage.xaml.cs">
+      <DependentUpon>AddIngredientPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddOrderPage.xaml.cs">
       <DependentUpon>AddOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EditDishPage.xaml.cs">
       <DependentUpon>EditDishPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditIngredientPage.xaml.cs">
+      <DependentUpon>EditIngredientPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\IngredientsPage.xaml.cs">
       <DependentUpon>IngredientsPage.xaml</DependentUpon>
@@ -130,7 +133,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AddIngredienPage.xaml">
+    <Page Include="Pages\AddIngredientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditDishPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditIngredientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

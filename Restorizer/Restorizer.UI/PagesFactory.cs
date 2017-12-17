@@ -66,9 +66,9 @@ namespace Restorizer.UI
             get { return _ingredientsPage; }
         }
 
-        private Pages.AddIngredienPage _addIngredientsPage = new Pages.AddIngredienPage();
+        private Pages.AddIngredientPage _addIngredientsPage = new Pages.AddIngredientPage();
 
-        public Pages.AddIngredienPage AddIngredientsPage
+        public Pages.AddIngredientPage AddIngredientsPage
         {
             get { return _addIngredientsPage; }
         }

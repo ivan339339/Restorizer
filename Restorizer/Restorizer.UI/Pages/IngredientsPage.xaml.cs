@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Restorizer.Data;
+using Restorizer.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +39,45 @@ namespace Restorizer.UI.Pages
 
         private void Suggestions_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SuggestionsPage(IngredientsListView.SelectedItem.ToString()));
+            if (IngredientsListView.SelectedIndex != -1)
+                NavigationService.Navigate(new SuggestionsPage(IngredientsListView.SelectedItem as Ingredient));
+        }
+
+        private void RefreshListBox()
+        {
+            IngredientsListView.ItemsSource = null;
+            IngredientsListView.ItemsSource = LoadData();
+        }
+
+        private IEnumerable<Ingredient> LoadData()
+        {
+            IEnumerable<Ingredient> ingredients;
+
+            using (var uow = new UnitOfWork())
+            {
+                ingredients = uow.Ingredients.GetAllItems();
+            }
+
+            return ingredients;
+        }
+
+        private void IngredientsListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshListBox();
+        }
+
+        private void IngredientsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var buttons = new List<Button> { EditButton, SuggestionsButton };
+            buttons.ForEach(b => b.IsEnabled = IngredientsListView.SelectedIndex != -1);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (IngredientsListView.SelectedIndex != -1)
+            {
+                NavigationService.Navigate(new EditIngredientPage(IngredientsListView.SelectedItem as Ingredient));
+            }
         }
     }
 }

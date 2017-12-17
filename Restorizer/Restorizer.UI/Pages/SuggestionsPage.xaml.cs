@@ -1,4 +1,5 @@
 ﻿using Restorizer.Data.DTO;
+using Restorizer.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,16 @@ namespace Restorizer.UI.Pages
     /// </summary>
     public partial class SuggestionsPage : Page, ISectionPage
     {
+        private Ingredient _currentIngredient;
 
         public string Heading { get; } = "Suggestions";
+
         public string IngredientName { get; set; }
 
-        public SuggestionsPage(string title)
+        public SuggestionsPage(Ingredient ingredient)
         {
-
-            IngredientName = title;
             InitializeComponent();
-
+            _currentIngredient = ingredient;
         }
 
 
@@ -41,12 +42,14 @@ namespace Restorizer.UI.Pages
 
         private async void SetSuggestions()
         {
-
             var service = new RecipeSearch();
-
+            DishesListView.ItemsSource = null;
             DishesListView.ItemsSource = await service.GetResult(Title);
-
         }
 
+        private void DishesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BrowseButton.IsEnabled = DishesListView.SelectedIndex != -1;
+        }
     }
 }

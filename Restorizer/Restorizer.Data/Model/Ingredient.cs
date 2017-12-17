@@ -14,5 +14,14 @@ namespace Restorizer.Data.Model
         public List<Supply> Supplies { get; set; }
         public int PricePerKg { get; set; }
 
+
+        public string Info
+        {
+            get
+            {
+                return $"{Name}: {PricePerKg} rub.";
+            }
+        }
+
     }
 }
