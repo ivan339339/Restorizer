@@ -1,4 +1,5 @@
-﻿using Restorizer.Data.DTO;
+﻿using Restorizer.Data.API.DTO;
+using Restorizer.Data.API;
 using Restorizer.Data.Model;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace Restorizer.UI.Pages
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
 
-            var SelectedItem = DishesListView.SelectedItem as Data.RecipeSearchResult;
+            var SelectedItem = DishesListView.SelectedItem as Data.API.DTO.RecipeSearchResult;
 
             var url = "https://www.google.ru/search" + $"?q={SelectedItem.Title}";
             Process.Start(url);
