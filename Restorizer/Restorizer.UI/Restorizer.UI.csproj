@@ -109,6 +109,9 @@
     <Compile Include="Pages\AddSupplyPage.xaml.cs">
       <DependentUpon>AddSupplyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DashBoardPage.xaml.cs">
+      <DependentUpon>DashBoardPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DishViewPage.xaml.cs">
       <DependentUpon>DishViewPage.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AddSupplyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DashBoardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
