@@ -46,6 +46,11 @@ namespace Restorizer.UI
             MainFrame.Navigate(PagesFactory.Default.IngredientsPage);
         }
 
+        private void DashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(PagesFactory.Default.DashBoardPage);
+        }
+
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
             if (MainFrame.Content is ISectionPage)

@@ -23,6 +23,16 @@ namespace Restorizer.UI
 
         // PAGES:
 
+        // DashBoard
+
+        private Pages.DashBoardPage _dashBoardPage = new Pages.DashBoardPage();
+
+        public Pages.DashBoardPage DashBoardPage
+        {
+            get { return _dashBoardPage = new Pages.DashBoardPage(); }
+        }
+
+
         // Dishes branch:
 
         private Pages.DishesPage _dishesPage = new Pages.DishesPage();
