@@ -49,7 +49,8 @@ namespace Restorizer.Data.Repositories
 
         public IEnumerable<Order> GetWithDishes()
         {
-            return _context.Orders.Include("Dishes").Include("Dishes.Dish").ToList();
+            return _context.Orders.Include("Dishes").Include("Dishes.Dish")
+                .Include("Dishes.Dish.Ingredients").Include("Dishes.Dish.Ingredients.Ingredient").ToList();
         }
 
     }
