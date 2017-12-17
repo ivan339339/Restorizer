@@ -32,6 +32,9 @@ namespace Restorizer.UI.Pages
         {
             InitializeComponent();
             _currentIngredient = ingredient;
+
+            SetSuggestions();
+
         }
 
 

@@ -24,7 +24,7 @@ namespace Restorizer.Data.DTO
                 client.DefaultRequestHeaders.Add("X-Mashape-Key", key);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                string url = uri + $"?excludeIngredients={query}&number=10";
+                string url = uri + $"?query={query}&number=10";
 
                 var response = await client.GetStringAsync(url);
 
