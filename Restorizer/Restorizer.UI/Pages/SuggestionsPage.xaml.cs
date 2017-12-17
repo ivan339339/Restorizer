@@ -1,4 +1,5 @@
-﻿using Restorizer.Data.DTO;
+﻿using Restorizer.Data;
+using Restorizer.Data.DTO;
 using Restorizer.Data.Model;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,8 @@ namespace Restorizer.UI.Pages
 
         private void DishesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BrowseButton.IsEnabled = DishesListView.SelectedIndex != -1;
+            var buttons = new List<Button> { BrowseButton, GoButton };
+            buttons.ForEach(b => b.IsEnabled = DishesListView.SelectedIndex != -1);
         }
 
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
@@ -65,6 +67,17 @@ namespace Restorizer.UI.Pages
             Process.Start(url);
 
 
+        }
+
+        private void GoButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DishesListView.SelectedIndex != -1)
+            {
+                var selectedSearchResult = DishesListView.SelectedItem;
+                var title = selectedSearchResult?.GetType().GetProperty("Title")?.GetValue(selectedSearchResult, null) as string;
+                PagesFactory.Default.AddDishPage.PreloadName(title);
+                NavigationService.Navigate(PagesFactory.Default.AddDishPage);
+            }
         }
     }
 }

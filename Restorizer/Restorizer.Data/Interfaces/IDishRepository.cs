@@ -18,6 +18,7 @@ namespace Restorizer.Data.Interfaces
 
         IEnumerable<Object> GetByCategories();
 
+        IEnumerable<Dish> GetAllActive();
 
         event MessageCallback MessageSent;
 

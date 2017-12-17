@@ -22,21 +22,22 @@ namespace Restorizer.UI.Pages
     /// <summary>
     /// Логика взаимодействия для AddDishPage.xaml
     /// </summary>
-    public partial class AddDishPage : Page
+    public partial class AddDishPage : Page, ISectionPage
     {
 
         private List<Ingredient> _poolIngredients = new List<Ingredient>();
 
         private List<Object> _selectedIngredients = new List<Object>();
 
+        private string _preloadedName;
+
         private int _currentQuantity;
 
+        public string Heading { get; } = "Dishes";
 
         public AddDishPage()
         {
             InitializeComponent();
-            LoadData();
-            RefreshPoolListBox();
         }
 
         private void LoadData()
@@ -69,20 +70,22 @@ namespace Restorizer.UI.Pages
         {
             var insertWindow = new InsertAmountWindow();
             insertWindow.QuantityInserted += GetQuantity;
-            insertWindow.ShowDialog();
-     
-            var selectedIngredient = PoolListBox.SelectedItem as Ingredient;
-            
-            _selectedIngredients.Add(new
+            if (insertWindow.ShowDialog() ?? false)
+            {
+
+                var selectedIngredient = PoolListBox.SelectedItem as Ingredient;
+
+                _selectedIngredients.Add(new
                 {
                     Ingredient = selectedIngredient,
-                    Amount =_currentQuantity,
+                    Amount = _currentQuantity,
                     Info = $"{selectedIngredient.Name}: {_currentQuantity} g."
                 });
 
-            _poolIngredients.Remove(selectedIngredient);
-            RefreshPoolListBox();
-            RefreshSelectedListBox();
+                _poolIngredients.Remove(selectedIngredient);
+                RefreshPoolListBox();
+                RefreshSelectedListBox();
+            }
         }
 
         private void RemoveIngredientButton_Click(object sender, RoutedEventArgs e)
@@ -107,7 +110,10 @@ namespace Restorizer.UI.Pages
                 uow.Complete();
             }
             if (result)
+            {
+                _preloadedName = null;
                 NavigationService.GoBack();
+            }
         }
 
         private void ShowMessage(string heading, string content)
@@ -118,6 +124,31 @@ namespace Restorizer.UI.Pages
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+            ClearForm();
+            RefreshPoolListBox();
+            RefreshSelectedListBox();
+            if (_preloadedName != null)
+            {
+                NameTextBox.Text = _preloadedName;
+            }
+        }
+
+        private void ClearForm()
+        {
+            if (_preloadedName == null)
+                NameTextBox.Text = "";
+            PriceTextBox.Text = "";
+            _selectedIngredients = new List<object>();
+        }
+
+        public void PreloadName(string name)
+        {
+            _preloadedName = name;
         }
     }
 }
