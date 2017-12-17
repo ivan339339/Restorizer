@@ -29,7 +29,7 @@
                                             </Grid.RowDefinitions>
                                             <TextBlock Text="{Binding Name}" Margin="5" HorizontalAlignment="Left"></TextBlock>
                                             <TextBlock Text="{Binding Price}" Margin="5" HorizontalAlignment="Left" Grid.Row="1"></TextBlock>
-                                            <Button Name="ViewButton" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"  Padding="10" Grid.RowSpan="2">View</Button>
+                                            <Button Name="ViewButton" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Padding="10" Grid.RowSpan="2" Tag="{Binding}" Click="ViewButton_Click">View</Button>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

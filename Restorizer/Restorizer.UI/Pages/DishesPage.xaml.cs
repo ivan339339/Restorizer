@@ -106,5 +106,14 @@ namespace Restorizer.UI.Pages
                 SelectedDish = null;
             }
         }
+
+        private void ViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            var pressedButton = sender as Button;
+            var correspondingDIsh = pressedButton.Tag as Dish;
+
+            if (correspondingDIsh != null)
+                NavigationService.Navigate(new DishViewPage(correspondingDIsh));
+        }
     }
 }
