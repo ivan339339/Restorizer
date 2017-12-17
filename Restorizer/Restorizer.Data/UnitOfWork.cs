@@ -1,4 +1,5 @@
 ﻿using Restorizer.Data.Interfaces;
+using Restorizer.Data.Logic;
 using Restorizer.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Restorizer.Data
         public IOrderRepository Orders { get; }
         public IIngredientRepository Ingredients { get; }
         public ISupplyRepository Supplies { get; }
+        public IStatisticsLogic Statistics { get; set; }
 
         public UnitOfWork()
         {
@@ -28,6 +30,7 @@ namespace Restorizer.Data
             Orders = new OrderRepository(_context);
             Ingredients = new IngredientRepository(_context);
             Supplies = new SupplyRepository(_context);
+            Statistics = new StatisticsLogic(_context);
         }
 
         public void Complete()

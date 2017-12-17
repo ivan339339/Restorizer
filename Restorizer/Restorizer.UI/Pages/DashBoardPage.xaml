@@ -26,7 +26,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Name="ReportsButton" Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15">
+            <Button Name="FinanceButton" Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15" Click="FinanceButton_Click" >
                 Finance
             </Button>
             <Button Name="GraphsButton" Grid.Row="1" Margin="10" Padding="20 10" FontSize="15">

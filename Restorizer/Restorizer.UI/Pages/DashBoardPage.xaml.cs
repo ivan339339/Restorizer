@@ -25,5 +25,10 @@ namespace Restorizer.UI.Pages
         {
             InitializeComponent();
         }
+
+        private void FinanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            DashBoardFrame.NavigationService.Navigate(PagesFactory.Default.ChartPage);
+        }
     }
 }

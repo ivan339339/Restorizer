@@ -10,7 +10,7 @@
       Title="ChartPage">
 
     <Grid>
-        <Wpf:CartesianChart Name="RevenueChart" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="Auto" Width="Auto"/>
+        <Wpf:CartesianChart Name="RevenueChart" Margin="20" FontSize="20" />
 
     </Grid>
 </Page>
