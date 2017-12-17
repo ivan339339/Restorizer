@@ -67,7 +67,7 @@ namespace Restorizer.UI.Pages
 
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
-            var insertWindow = new InsertQuantityWindow();
+            var insertWindow = new InsertAmountWindow();
             insertWindow.QuantityInserted += GetQuantity;
             insertWindow.ShowDialog();
      

@@ -9,5 +9,10 @@ namespace Restorizer.Data.Interfaces
 {
     public interface IOrderRepository : IRepository<Order>
     {
+        event MessageCallback MessageSent;
+
+        bool TryAdd(List<object> ingredients);
+
+        IEnumerable<Order> GetWithDishes();
     }
 }

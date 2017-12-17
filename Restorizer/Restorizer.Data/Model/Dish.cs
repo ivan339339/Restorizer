@@ -15,5 +15,13 @@ namespace Restorizer.Data.Model
         public List<DishHasIngredient> Ingredients { get; set; }
         public List<OrderHasDish> Orders { get; set; }
         public bool IsArchived { get; set; }
+
+        public string Info
+        {
+            get
+            {
+                return $"{Name}: {Price} rub.";
+            }
+        }
     }
 }

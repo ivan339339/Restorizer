@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restorizer.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,20 +15,22 @@ using System.Windows.Shapes;
 
 namespace Restorizer.UI.Windows
 {
+    public delegate void QuantityCallback(int quantity);
     /// <summary>
-    /// Логика взаимодействия для InsertQuantityWindow.xaml
+    /// Interaction logic for InsertQuantityWindow.xaml
     /// </summary>
-    public partial class InsertQuantityWindow : Window
+    public partial class InsertAmountWindow : Window
     {
-        public event QuantityCallback QuantityInserted;
 
-        public InsertQuantityWindow()
+        public event QuantityCallback QuantityInserted;
+         
+        public InsertAmountWindow()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             int quantity;
             if (QuantityTextBox.Text != "" && int.TryParse(QuantityTextBox.Text, out quantity) && quantity > 0)
             {

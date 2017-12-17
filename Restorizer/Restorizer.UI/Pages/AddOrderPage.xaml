@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Restorizer.UI.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="AddOrderPage">
+      Title="AddOrderPage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,8 +27,8 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Ingredient" Grid.Row="3" Margin="10"/>
 
-            <TextBlock Text="Price" Margin="10" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBlock Name="Price" Grid.Row="2" Grid.Column="1" Margin="10"></TextBlock>
+            <!--<TextBlock Text="Price" Margin="10" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBlock Name="PriceTextBox" Grid.Row="2" Grid.Column="1" Margin="10"></TextBlock>-->
 
             <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
@@ -40,10 +40,10 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <ListBox Name="PoolListBox" DisplayMemberPath="Name" Margin="10" Grid.RowSpan="2"></ListBox>
-                <ListBox Name="SelectedListBox" DisplayMemberPath="Name" Grid.Column="3" Margin="10" Grid.RowSpan="2"></ListBox>
-                <Button Name="AddIngredientButton" Grid.Column="1" Content="=>" Margin="0 5" VerticalAlignment="Bottom" />
-                <Button Name="RemoveIngredientButton" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Content="&lt;=" Margin="0 5"></Button>
+                <ListBox Name="PoolListBox" DisplayMemberPath="Info" Margin="10" Grid.RowSpan="2"></ListBox>
+                <ListBox Name="SelectedListBox" DisplayMemberPath="Info" Grid.Column="3" Margin="10" Grid.RowSpan="2"></ListBox>
+                <Button Name="AddDishButton" Grid.Column="1" Content="=>" Margin="0 5" VerticalAlignment="Bottom" Click="AddDishButton_Click"/>
+                <Button Name="RemoveDishButton" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Content="&lt;=" Margin="0 5" Click="RemoveDishButton_Click"></Button>
             </Grid>
         </Grid>
 
@@ -55,10 +55,10 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Button Name="AddDishButton" Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15">
+            <Button Name="AddButton" Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15" Click="AddButton_Click">
                 Add
             </Button>
-            <Button Grid.Row="2" Margin="10" Padding="20 10" FontSize="15">
+            <Button Name="Back" Grid.Row="2" Margin="10" Padding="20 10" FontSize="15" Click="BackButton_Click">
                 Back
             </Button>
 

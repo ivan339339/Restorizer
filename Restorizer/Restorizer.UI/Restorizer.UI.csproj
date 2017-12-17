@@ -113,6 +113,9 @@
     <Compile Include="Pages\SuppliesPage.xaml.cs">
       <DependentUpon>SuppliesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\InsertAmountWindow.xaml.cs">
+      <DependentUpon>InsertAmountWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\InsertQuantityWindow.xaml.cs">
       <DependentUpon>InsertQuantityWindow.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SuppliesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\InsertAmountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Restorizer.Data;
+using Restorizer.Data.Model;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +29,32 @@ namespace Restorizer.UI.Pages
         public OrdersPage()
         {
             InitializeComponent();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddOrderPage());
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshListView();
+        }
+
+        private void RefreshListView()
+        {
+            OrdersListView.ItemsSource = null;
+            OrdersListView.ItemsSource = LoadData();
+        }
+
+        private IEnumerable<Order> LoadData()
+        {
+            IEnumerable<Order> orders;
+            using (var uow = new UnitOfWork())
+            {
+                orders = uow.Orders.GetWithDishes();
+            }
+            return orders;
         }
     }
 }
