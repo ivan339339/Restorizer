@@ -121,6 +121,9 @@
     <Compile Include="Pages\EditIngredientPage.xaml.cs">
       <DependentUpon>EditIngredientPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ChartPage.xaml.cs">
+      <DependentUpon>ChartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\IngredientsPage.xaml.cs">
       <DependentUpon>IngredientsPage.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditIngredientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ChartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
