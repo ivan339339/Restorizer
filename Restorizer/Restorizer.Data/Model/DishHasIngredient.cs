@@ -24,5 +24,13 @@ namespace Restorizer.Data.Model
 
         public int AmountInG { get; set; }
 
+        public string AmountInfo
+        {
+            get
+            {
+                return $"{Ingredient.Name}: {AmountInG} g.";
+            }
+        }
+
     }
 }

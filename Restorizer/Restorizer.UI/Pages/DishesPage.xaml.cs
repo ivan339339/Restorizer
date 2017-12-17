@@ -86,5 +86,10 @@ namespace Restorizer.UI.Pages
                 SelectedDish = selectedListView.SelectedItem as Dish;
             }
         }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EditDishPage(_selectedDish));
+        }
     }
 }

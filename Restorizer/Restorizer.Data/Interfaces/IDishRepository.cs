@@ -12,7 +12,10 @@ namespace Restorizer.Data.Interfaces
     {
         bool TryAdd(string name, object category, string price, List<object> ingredients);
 
-        IEnumerable<object> GetByCategories();
+        bool TryEdit(Dish dish, string name, object category, string price, List<DishHasIngredient> ingredients);
+
+        IEnumerable<Object> GetByCategories();
+
 
         event MessageCallback MessageSent;
 

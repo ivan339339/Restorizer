@@ -25,8 +25,6 @@ namespace Restorizer.UI.Pages
     public partial class AddDishPage : Page
     {
 
-        private Dish newDish = new Dish();
-
         private List<Ingredient> _poolIngredients = new List<Ingredient>();
 
         private List<Object> _selectedIngredients = new List<Object>();

@@ -17,6 +17,75 @@ namespace Restorizer.Data.Repositories
 
         public bool TryAdd(string name, object category, string price, List<object> ingredients)
         {
+            if (IsDataValid(name, category, price, ingredients))
+            {
+                int parsedPrice = int.Parse(price);
+                var localCategory = category as Category;
+                var categoryInDB = _context.Categories.FirstOrDefault(c => c.Id == localCategory.Id);
+
+                var newDish = new Dish
+                {
+                    Name = name,
+                    Category = categoryInDB,
+                    Price = parsedPrice,
+                    Ingredients = new List<DishHasIngredient>()
+                };
+
+                foreach (var ingredient in ingredients)
+                {
+
+                    var ingredientObject = ingredient?.GetType().GetProperty("Ingredient")?.GetValue(ingredient, null) as Ingredient;
+                    var ingredientInDB = _context.Ingredients.FirstOrDefault(i => i.Id == ingredientObject.Id);
+
+                    newDish.Ingredients.Add(new DishHasIngredient
+                    {
+                        IngredientId = ingredientInDB.Id,
+                        Ingredient = ingredientInDB,
+                        AmountInG = (int)ingredient?.GetType().GetProperty("Amount")?.GetValue(ingredient, null)
+                    });
+                }
+
+                Add(newDish);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool TryEdit(Dish dish, string name, object category, string price, List<DishHasIngredient> ingredients)
+        {
+            if (IsDataValid(name, category, price, ingredients))
+            {
+                var dishInDB = _context.Dishes.Include("Ingredients").FirstOrDefault(d => d.Id == dish.Id);
+
+                var localCategroy = category as Category;
+
+                var categoryInDB = _context.Categories.FirstOrDefault(c => c.Id == localCategroy.Id);
+
+                dishInDB.Name = name;
+                dishInDB.Category = categoryInDB;
+                dishInDB.Price = int.Parse(price);
+                dishInDB.Ingredients.Clear();
+
+                foreach (var ing in ingredients)
+                {   
+                    var ingredientInDB = _context.Ingredients.FirstOrDefault(i => i.Id == ing.Ingredient.Id);
+                    dishInDB.Ingredients.Add(
+                        new DishHasIngredient
+                        {
+                            IngredientId = ing.IngredientId,
+                            Ingredient = ingredientInDB,
+                            AmountInG = ing.AmountInG
+                        });
+                }
+                return true;
+            }
+            else
+                return false;
+        }
+
+        private bool IsDataValid<T>(string name, object category, string price, List<T> ingredients)
+        {
             int parsedPrice;
 
             if (name == "")
@@ -41,38 +110,14 @@ namespace Restorizer.Data.Repositories
             }
             else
             {
-                var localCategory = category as Category;
-                var categoryInDB = _context.Categories.FirstOrDefault(c => c.Id == localCategory.Id);
-
-                var newDish = new Dish
-                {
-                    Name = name,
-                    Category = categoryInDB,
-                    Price = parsedPrice,
-                    Ingredients = new List<DishHasIngredient>()
-                };
-
-                foreach (var ingredient in ingredients) {
-
-                    var ingredientObject = ingredient?.GetType().GetProperty("Ingredient")?.GetValue(ingredient, null) as Ingredient;
-                    var ingredientInDB = _context.Ingredients.FirstOrDefault(i => i.Id == ingredientObject.Id);
-
-                    newDish.Ingredients.Add(new DishHasIngredient
-                    {
-                        IngredientId = ingredientInDB.Id,
-                        Ingredient = ingredientInDB,
-                        AmountInG = (int)ingredient?.GetType().GetProperty("Amount")?.GetValue(ingredient, null)
-                    });
-                }
-
-                Add(newDish);
                 return true;
             }
         }
 
-        public IEnumerable<object> GetByCategories()
+        public IEnumerable<Object> GetByCategories()
         {
-            var result = _context.Dishes.GroupBy(d => d.Category).Select(g => new { Category = g.Key, Dishes = g.ToList() }).ToList();
+            var dishes = _context.Dishes.Include("Ingredients").Include("Ingredients.Ingredient").Include("Category").ToList();
+            var result = dishes.GroupBy(d => d.Category).Select(g => g.Key).ToList();
             return result;
         }
         

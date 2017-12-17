@@ -11,5 +11,7 @@ namespace Restorizer.Data.Interfaces
     public interface IIngredientRepository : IRepository<Ingredient>
     {
         List<IngredientTotalAmount> Get5LeastPopularIngredient();
+
+        IEnumerable<Ingredient> GetIngredientDifference(List<DishHasIngredient> ingredients);
     }
 }

@@ -42,5 +42,13 @@ namespace Restorizer.Data.Repositories
 
             return sordtedingredient;
         }
+
+        public IEnumerable<Ingredient> GetIngredientDifference(List<DishHasIngredient> ingredients)
+        {
+            var allIngredients = GetAllItems();
+            var listOfIngredientIDs = ingredients.Select(i2 => i2.IngredientId).ToList();
+            var result = allIngredients.Where(i => !(listOfIngredientIDs.Contains(i.Id)));
+            return result;
+        }
     }
 }
