@@ -103,7 +103,7 @@ namespace Restorizer.Data.Repositories
                 MessageSent?.Invoke("Error!", "The category wasn't chosen");
                 return false;
             }
-            else if (!int.TryParse(price, out parsedPrice) && parsedPrice <= 0)
+            else if (!int.TryParse(price, out parsedPrice) || parsedPrice <= 0)
             {
                 MessageSent?.Invoke("Error!", "The price must be a positive integer");
                 return false;

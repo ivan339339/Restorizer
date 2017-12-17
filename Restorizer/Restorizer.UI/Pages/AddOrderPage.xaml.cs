@@ -38,7 +38,7 @@ namespace Restorizer.UI.Pages
         {
             using (var uow = new UnitOfWork())
             {
-                _poolDishes = uow.Dishes.GetAllItems().ToList();
+                _poolDishes = uow.Dishes.GetAllActive().ToList();
             }
         }
 

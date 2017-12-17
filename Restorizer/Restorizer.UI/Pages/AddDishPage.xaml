@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Restorizer.UI.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="AddDishPage">
+      Title="AddDishPage"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
