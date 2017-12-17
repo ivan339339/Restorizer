@@ -16,6 +16,10 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <ListView x:Name="SuppliesListView" Margin="10" DisplayMemberPath="Title">
+
+        </ListView>
+
         <Grid Grid.Column="1" Background="#FFE6AABE" >
 
             <Grid.RowDefinitions>
@@ -24,8 +28,10 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
+            
 
-            <Button Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15">
+            <Button Name="AddButton"  Grid.Row="0" Margin="10 20 10 10" Padding="20 10" FontSize="15" Click="AddButton_Click">
                 Add
             </Button>
 
