@@ -96,6 +96,7 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStatisticsLogic.cs" />
     <Compile Include="Logic\StatisticsLogic.cs" />
+    <Compile Include="Interfaces\ISupplyRepository.cs" />
     <Compile Include="Migrations\201712092203162_Initial.cs" />
     <Compile Include="Migrations\201712092203162_Initial.Designer.cs">
       <DependentUpon>201712092203162_Initial.cs</DependentUpon>
@@ -119,6 +120,7 @@
     <Compile Include="Repositories\IngredientRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\SupplyRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="ViewModel\DayWithRevenue.cs" />
     <Compile Include="ViewModel\DishWithProperty.cs" />

@@ -23,5 +23,21 @@ namespace Restorizer.Data.Model
         public int Amount { get; set; }
 
         public int PricePerKg { get; set; }
+
+        public string AmountInfo
+        {
+            get
+            {
+                return $"Amount: {Amount} kg. for {PricePerKg} rub/kg";
+            }
+        }
+
+        public string Cost
+        {
+            get
+            {
+                return $"Cost: {Amount * PricePerKg} rub.";
+            }
+        }
     }
 }
